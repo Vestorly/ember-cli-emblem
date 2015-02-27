@@ -2,6 +2,7 @@
 'use strict';
 
 var Filter = require('broccoli-filter');
+var checker = require('ember-cli-version-checker');
 
 function TemplateCompiler (inputTree, options) {
   if (!(this instanceof TemplateCompiler)) {
@@ -28,14 +29,22 @@ TemplateCompiler.prototype.processString = function (string, relativePath) {
 
 module.exports = {
   name: 'ember-cli-emblem-hbs-printer',
-  included: function(app){
-    this.app = app;
+  shouldSetupRegistryInIncluded: function() {
+    return !checker.isAbove(this, '0.2.0');
+  },
+  setupPreprocessorRegistry: function(type, registry) {
     var compiler = {
-      toTree: function(tree, inputPath, outputPath) {
+      toTree: function(tree) {
         return TemplateCompiler(tree);
       }
     };
-    this.app.registry.add('template', compiler, ['embl', 'emblem']);
+    registry.add('template', compiler, 'ember-cli-emblem-hbs-printer', ['embl', 'emblem']);
+  },
+  included: function(app){
+    this._super.included.apply(this, arguments);
+    if (this.shouldSetupRegistryInIncluded()) {
+      this.setupPreprocessorRegistry('parent', app.registry);
+    }
   }
 
 };

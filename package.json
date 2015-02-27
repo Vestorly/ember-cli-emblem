@@ -39,9 +39,12 @@
   ],
   "ember-addon": {
     "configPath": "tests/dummy/config",
-    "before": [ "ember-cli-htmlbars"]
+    "before": [
+      "ember-cli-htmlbars"
+    ]
   },
   "dependencies": {
-    "broccoli-filter": "^0.1.11"
+    "broccoli-filter": "^0.1.11",
+    "ember-cli-version-checker": "^1.0.2"
   }
 }
