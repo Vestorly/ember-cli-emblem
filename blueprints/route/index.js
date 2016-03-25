@@ -1,3 +1,5 @@
+var extension = require('../../lib/extension');
+
 module.exports = {
   description: 'Generates a route and registers it with the router',
 
@@ -16,8 +18,11 @@ module.exports = {
       name: 'path',
       type: String,
       default: ''
-    }
+    },
+    extension.cliOption
   ],
+
+  afterInstall: extension.afterInstall,
 
   _fixBlueprint: function(options) {
     var blueprint = this.lookupBlueprint('route');
