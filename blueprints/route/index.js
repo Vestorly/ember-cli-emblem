@@ -53,5 +53,8 @@ module.exports = {
 
   locals: function(options) {
     return ancestralBlueprint('component', this.project).locals(options);
+  },
+  fileMapTokens: function() {
+    return ancestralBlueprint('component', this.project).fileMapTokens();
   }
 };
