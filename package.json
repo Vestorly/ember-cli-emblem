@@ -24,9 +24,9 @@
     "ember-cli-babel": "^6.6.0",
     "ember-cli-legacy-blueprints": "^0.1.1",
     "ember-cli-version-checker": "^1.0.2",
+    "emblem": "^0.12.0",
     "lodash.assign": "^4.2.0",
-    "lodash.defaults": "^4.2.0",
-    "emblem": "^0.10.0"
+    "lodash.defaults": "^4.2.0"
   },
   "devDependencies": {
     "broccoli-asset-rev": "^2.4.5",
