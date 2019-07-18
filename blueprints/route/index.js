@@ -49,5 +49,12 @@ module.exports = {
 
   afterUninstall: function(options) {
     return this._fixBlueprint(options).afterUninstall(options);
+  },
+
+  locals: function(options) {
+    return ancestralBlueprint('component', this.project).locals(options);
+  },
+  fileMapTokens: function() {
+    return ancestralBlueprint('component', this.project).fileMapTokens();
   }
 };
